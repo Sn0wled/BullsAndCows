@@ -2,22 +2,22 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args){
-        Dict d = new Dict("src\\russian_nouns.txt");
-        CowsAndBulls a = new CowsAndBulls(d.GetRandomWord());
+        Dict nouns = new Dict("src\\russian_nouns.txt");
         CowsBulls result = new CowsBulls(0, 0);
+        CowsAndBulls game = new CowsAndBulls(nouns.getRandomWord(), result);
         Scanner in = new Scanner(System.in);
-        System.out.println("Загадано слово из "+ a.GetSize() + " букв");
+        System.out.println("Загадано слово из "+ game.getSize() + " букв");
         do {
             System.out.print("Введите слово: ");
             String word = in.nextLine();
-            if (word.length() != a.GetSize()){
-                System.out.println("Слово должно состоять из 5 букв");
+            if (word.length() != game.getSize()){
+                System.out.println("Слово должно состоять из " + game.getSize() + " букв");
                 continue;
             }
-            result = a.CheckWord(word);
-            System.out.printf("Коров: %d, Быков: %d\n", result.GetCows(), result.GetBulls());
-        } while (result.GetBulls() != a.GetSize());
-        System.out.println("Вы победили. Попыток: "+ a.GetCounter());
+            game.checkWord(word);
+            System.out.printf("Коров: %d, Быков: %d\n", result.getCows(), result.getBulls());
+        } while (result.getBulls() != game.getSize());
+        System.out.println("Вы победили. Попыток: "+ game.getCounter());
 
     }
 }

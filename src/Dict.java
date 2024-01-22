@@ -1,5 +1,3 @@
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -21,7 +19,7 @@ public class Dict {
             throw new RuntimeException(e);
         }
     }
-    public String GetRandomWord(){
+    public String getRandomWord(){
         return words.get(rand.nextInt(words.size()));
     }
 }

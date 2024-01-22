@@ -1,11 +1,17 @@
 public class CowsAndBulls {
     private final String word;
     int counter = 0;
-    public CowsAndBulls(String word){
+    CowsBulls result;
+    public CowsAndBulls(String word, CowsBulls result){
         this.word = word.toLowerCase();
+        this.result = result;
     }
-    public CowsBulls CheckWord(String word){
-        if (word.length() != GetSize()) return new CowsBulls(0, 0);
+    public void checkWord(String word){
+        if (word.length() != getSize()) {
+            result.setCows(0);
+            result.setBulls(0);
+            return;
+        }
         int cows = 0, bulls = 0;
         word = word.toLowerCase();
 
@@ -29,12 +35,16 @@ public class CowsAndBulls {
         }
 
         counter++;
-        return new CowsBulls(cows, bulls);
+        result.setCows(cows);
+        result.setBulls(bulls);
     }
-    public int GetSize(){
+    public int getSize(){
         return word.length();
     }
-    public int GetCounter(){
+    public int getCounter(){
         return  counter;
+    }
+    public CowsBulls getResult(){
+        return result;
     }
 }
